@@ -1,0 +1,18 @@
+﻿.mkw-wishlist-button {
+    color: var(--mkw-text-white);
+    background-color: var(--mkw-accent);
+    margin-top: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: var(--mkw-radius-lg);
+    font-size: var(--mkw-font);
+    font-weight: bold;
+    transition: background-color 0.2s;
+    width: 100%;
+    max-width: 200px;
+}
+
+.mkw-wishlist-button:hover {
+    background-color: black;
+}

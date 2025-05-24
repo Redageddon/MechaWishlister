@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mecha Wishlist</title>
+    <link rel="stylesheet" href="styles/wishlistStyles.css">
+</head>
+<body class="mkw-main mkw-background-color">
+    <div id="grade-filters" class="mkw-grade-filters">
+        <template id="grade-filter-template">
+            <label class="mkw-grade-filter mkw-pointer mkw-hover-opacity mkw-radius-sm mkw-text-white">
+                <input type="checkbox" value="">
+                <span class="grade-name"></span>
+            </label>
+        </template>
+    </div>
+    
+    <div class="mkw-wishlist-controls mkw-centered-flex">
+        <button id="clear" class="mkw-control-button mkw-accent-color mkw-pointer mkw-hover-opacity mkw-radius-lg mkw-text-white">Clear Wishlist</button>
+        <button id="export" class="mkw-control-button mkw-accent-color mkw-pointer mkw-hover-opacity mkw-radius-lg mkw-text-white">Export Wishlist</button>
+        <button id="import" class="mkw-control-button mkw-accent-color mkw-pointer mkw-hover-opacity mkw-radius-lg mkw-text-white">Import Wishlist</button>
+        <button id="refresh" class="mkw-control-button mkw-accent-color mkw-pointer mkw-hover-opacity mkw-radius-lg mkw-text-white">Refresh Prices</button>
+        <input type="file" id="fileInput" accept=".json" style="display: none;">
+    </div>
+
+    <div id="wishlist">
+        <template id="wishlist-item-template">
+            <div class="mkw-wrapper mkw-radius-lg">
+                <div class="mkw-delete-container">
+                    <button class="mkw-delete-button mkw-centered-flex mkw-pointer mkw-hover-opacity mkw-text-white">X</button>
+                </div>
+                <div class="mkw-left-container mkw-centered-flex mkw-accent-color">
+                    <img class="mkw-main-image mkw-radius-lg" src="" alt="Main product image">
+                </div>
+                <div class="mkw-right-container mkw-accent-color">
+                    <div class="mkw-top-info mkw-centered-flex">
+                        <div>
+                            <a class="mkw-link mkw-background-color mkw-hover-opacity mkw-radius-lg" href="" target="_blank"></a>
+                            <div>
+                                <label>
+                                    <select class="mkw-grade-select mkw-background-color mkw-hover-opacity mkw-radius-sm mkw-text-white">
+                                        <option value="">Select Grade</option>
+                                    </select>
+                                </label>
+                                <div class="mkw-status-container">
+                                    <label class="mkw-status-label mkw-pointer mkw-hover-opacity mkw-text-white">
+                                        <input type="checkbox" class="mkw-pointer" data-status="inProgress">
+                                        In Progress
+                                    </label>
+                                    <label class="mkw-status-label mkw-pointer mkw-hover-opacity mkw-text-white">
+                                        <input type="checkbox" class="mkw-pointer" data-status="built">
+                                        Built
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mkw-price-container">
+                                <s class="mkw-regular-price"></s>
+                                <span class="mkw-sale-price mkw-text-white"></span>
+                            </div>
+                        </div>
+                        <div class="mkw-preference-controls mkw-centered-flex">
+                            <button class="mkw-preference-button mkw-background-color mkw-pointer mkw-hover-opacity mkw-radius-sm mkw-text-white" data-action="decrease">-</button>
+                            <label>
+                                <input type="number" class="mkw-preference-input mkw-background-color mkw-hover-opacity mkw-radius-lg mkw-text-white" min="1">
+                            </label>
+                            <button class="mkw-preference-button mkw-background-color mkw-pointer mkw-hover-opacity mkw-radius-sm mkw-text-white" data-action="increase">+</button>
+                        </div>
+                    </div>
+                    <div class="mkw-images"></div>
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <script src="scripts/scrapers/baseScraper.js"></script>
+    <script src="scripts/wishlist/wishlistUtils.js"></script>
+    <script src="scripts/wishlist/wishlistState.js"></script>
+    <script src="scripts/wishlist/wishlist.js"></script>
+</body>
+</html>
