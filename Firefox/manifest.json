@@ -1,0 +1,72 @@
+﻿{
+  "manifest_version": 3,
+  "name": "Model Wishlister",
+  "version": "1.0",
+  "description": "Add kits to a universal list.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "action": {
+    "default_icon": {
+      "48": "icon.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.usagundamstore.com/*",
+        "*://usagundamstore.com/*",
+        "*://*.gundamplacestore.com/*",
+        "*://gundamplacestore.com/*",
+        "*://*.newtype.us/*",
+        "*://newtype.us/*",
+        "*://*.gundamplanet.com/*",
+        "*://gundamplanet.com/*",
+        "*://*.sidesevenexports.com/*",
+        "*://sidesevenexports.com/*",
+        "*://*.p-bandai.com/*",
+        "*://p-bandai.com/*"
+      ],
+      "js": [
+        "scripts/scrapers/baseScraper.js",
+        "scripts/scrapers/GundamPlaceStore.js",
+        "scripts/scrapers/GundamPlanetStore.js",
+        "scripts/scrapers/NewtypeStore.js",
+        "scripts/scrapers/PBandaiStore.js",
+        "scripts/scrapers/SideSevenExportsStore.js",
+        "scripts/scrapers/UsaGundamStore.js",
+        "scripts/buttonInjector.js"
+      ],
+      "css": [
+        "styles/wishlistStyles.css",
+        "styles/buttonStyles.css"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "scripts": ["scripts/wishlistLauncher.js"],
+    "type": "module"
+  },
+  "host_permissions": [
+    "*://*.usagundamstore.com/*",
+    "*://usagundamstore.com/*",
+    "*://*.gundamplacestore.com/*",
+    "*://gundamplacestore.com/*",
+    "*://*.newtype.us/*",
+    "*://newtype.us/*",
+    "*://*.gundamplanet.com/*",
+    "*://gundamplanet.com/*",
+    "*://*.sidesevenexports.com/*",
+    "*://sidesevenexports.com/*",
+    "*://*.p-bandai.com/*",
+    "*://p-bandai.com/*"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{32df04f2-e476-473e-ae1c-fb7976d1850c}"
+    }
+  }
+}

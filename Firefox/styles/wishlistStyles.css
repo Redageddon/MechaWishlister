@@ -1,0 +1,245 @@
+:root {
+    --mkw-accent: #42414d;
+    --mkw-background: #2b2a33;
+    --mkw-text-white: #fbfbfe;
+    --mkw-text-gray: #a6a5ac;
+    --mkw-link-blue: #94c4fb;
+    --mkw-link-hover: #4b6480;
+    --mkw-success: #58ff33;
+    --mkw-danger: #ff0000;
+    --mkw-danger-hover: #ff0000;
+    --mkw-danger-hover-opacity: 0.5;
+
+    --mkw-radius-sm: 6px;
+    --mkw-radius-lg: 12px;
+
+    --mkw-font: 16px;
+    --mkw-font-lg: 25px;
+
+    --mkw-margin: 20px;
+}
+
+.mkw-centered-flex {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.mkw-background-color {
+    background-color: var(--mkw-background);
+}
+
+.mkw-accent-color {
+    background-color: var(--mkw-accent);
+}
+
+.mkw-pointer {
+    cursor: pointer;
+}
+
+.mkw-hover-opacity {
+    transition: opacity 0.2s;
+}
+
+.mkw-hover-opacity:hover {
+    opacity: var(--mkw-danger-hover-opacity);
+}
+
+.mkw-radius-sm {
+    border-radius: var(--mkw-radius-sm);
+}
+
+.mkw-radius-lg {
+    border-radius: var(--mkw-radius-lg);
+}
+
+.mkw-text-white {
+    color: var(--mkw-text-white);
+}
+
+.mkw-main {
+    margin: var(--mkw-margin) 32px;
+}
+
+.mkw-grade-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.mkw-grade-filter {
+    align-items: center;
+    background-color: var(--mkw-accent);
+    display: flex;
+    gap: 5px;
+    padding: 5px 10px;
+}
+
+.mkw-wishlist-controls {
+    gap: 16px;
+    margin-bottom: var(--mkw-margin);
+    margin-top: var(--mkw-margin);
+}
+
+.mkw-control-button {
+    border: none;
+    padding: 10px 20px;
+    font-size: var(--mkw-font);
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+#clear.mkw-control-button {
+    color: var(--mkw-danger);
+}
+
+#clear.mkw-control-button:hover {
+    background-color: var(--mkw-danger-hover);
+    color: var(--mkw-text-white);
+    opacity: 1;
+}
+
+#refresh.mkw-control-button {
+    color: var(--mkw-success);
+}
+
+#refresh.mkw-control-button:hover {
+    background-color: var(--mkw-success);
+    color: black;
+    opacity: 1;
+}
+
+.mkw-wrapper {
+    display: flex;
+    height: 864px;
+    margin-bottom: var(--mkw-margin);
+    overflow: hidden;
+    position: relative;
+    width: auto;
+}
+
+.mkw-delete-container {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    z-index: 1;
+}
+
+.mkw-delete-button {
+    background-color: var(--mkw-danger);
+    border: none;
+    border-radius: var(--mkw-radius-sm);
+    font-size: var(--mkw-font);
+    height: 25px;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    width: 25px;
+}
+
+.mkw-left-container {
+    flex: 1 1 0;
+    justify-content: center;
+}
+
+.mkw-main-image {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+}
+
+.mkw-right-container {
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    padding: var(--mkw-margin);
+}
+
+.mkw-top-info {
+    justify-content: space-between;
+}
+
+.mkw-link {
+    color: var(--mkw-link-blue);
+    display: inline-block;
+    font-size: var(--mkw-font);
+    font-weight: bold;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+.mkw-grade-select {
+    border: 1px solid var(--mkw-background);
+    padding: 4px 8px;
+}
+
+.mkw-grade-select:focus {
+    border-color: var(--mkw-accent);
+    outline: none;
+}
+
+.mkw-status-container {
+    align-items: center;
+    display: inline-flex;
+    gap: 15px;
+}
+
+.mkw-status-label {
+    gap: 5px;
+}
+
+.mkw-price-container {
+    margin-top: 4px;
+}
+
+.mkw-regular-price {
+    color: var(--mkw-text-gray);
+    font-size: var(--mkw-font);
+}
+
+.mkw-sale-price {
+    font-size: var(--mkw-font-lg);
+}
+
+.mkw-preference-controls {
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.mkw-preference-button {
+    border: 1px solid var(--mkw-background);
+    font-size: var(--mkw-font);
+    height: 45px;
+    justify-content: center;
+    width: 45px;
+}
+
+.mkw-preference-input {
+    -moz-appearance: textfield;
+    border: 2px solid black;
+    font-size: var(--mkw-font);
+    height: 40px;
+    text-align: center;
+    width: 60px;
+}
+
+.mkw-images {
+    display: grid;
+    flex: 1 1 0;
+    gap: 10px;
+    grid-auto-rows: 1fr;
+    max-height: 88%;
+}
+
+.mkw-images img {
+    background: black;
+    border: 2px solid black;
+    border-radius: var(--mkw-radius-sm);
+    cursor: pointer;
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+}
