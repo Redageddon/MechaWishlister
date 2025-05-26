@@ -27,7 +27,9 @@
         "*://*.sidesevenexports.com/*",
         "*://sidesevenexports.com/*",
         "*://*.p-bandai.com/*",
-        "*://p-bandai.com/*"
+        "*://p-bandai.com/*",
+        "*://amiami.com/*",
+        "*://*.amiami.com/*"
       ],
       "js": [
         "scripts/scrapers/baseScraper.js",
@@ -37,6 +39,7 @@
         "scripts/scrapers/PBandaiStore.js",
         "scripts/scrapers/SideSevenExportsStore.js",
         "scripts/scrapers/UsaGundamStore.js",
+        "scripts/scrapers/AmiamiPlaceStore.js",
         "scripts/buttonInjector.js"
       ],
       "css": [
@@ -61,6 +64,8 @@
     "*://*.sidesevenexports.com/*",
     "*://sidesevenexports.com/*",
     "*://*.p-bandai.com/*",
-    "*://p-bandai.com/*"
+    "*://p-bandai.com/*",
+    "*://amiami.com/*",
+    "*://*.amiami.com/*"
   ]
 }

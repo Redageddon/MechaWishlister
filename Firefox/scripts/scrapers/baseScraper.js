@@ -28,16 +28,26 @@ class BaseStore {
     }
 
     scrape() {
-        const { regularPrice: r, salePrice: s } = this.getPrices();
+        const { regularPrice: r, salePrice: s } = this.getPrices(); 
+        
+        console.log(r, s);
+
         const data = {
             title: this.getTitle().trim(),
-            regularPrice: '$' + r.split('$')[1].trim(),
-            salePrice: '$' + s.split('$')[1].trim(),
+            regularPrice: this._validatePrice(r),
+            salePrice: this._validatePrice(s),
             images: this.getImages(),
             url: this.url
         };
         ProductData.validate(data);
         return data;
+    }
+
+    _validatePrice(price) {
+        if (price === 'Sold Out' || price[0] === '¥') return price;
+        if (price[0] === '$') return r.split('$')[1].trim();
+        
+        console.error('Invalid price format:', price);
     }
 
     formatImageUrl(src) {
@@ -63,6 +73,8 @@ function getProductData(doc, url) {
         store = new PBandaiStore(doc, url);
     } else if (domain.includes("sidesevenexports.com")) {
         store = new SideSevenExportsStore(doc, url);
+    } else if (domain.includes("amiami.com")) {
+        store = new AmiamiPlaceStore(doc, url);
     }
 
     return store?.scrape();
