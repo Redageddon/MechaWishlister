@@ -218,7 +218,7 @@
 }
 
 .mkw-preference-input {
-    -moz-appearance: textfield;
+    appearance: textfield;
     border: 2px solid black;
     font-size: var(--mkw-font);
     height: 40px;
@@ -242,4 +242,5 @@
     height: 100%;
     object-fit: contain;
     width: 100%;
+    min-height: 0;
 }
