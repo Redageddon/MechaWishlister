@@ -47,8 +47,7 @@
     }
   ],
   "background": {
-    "scripts": ["scripts/wishlistLauncher.js"],
-    "type": "module"
+    "service_worker": "scripts/wishlistLauncher.js"
   },
   "host_permissions": [
     "*://*.usagundamstore.com/*",
@@ -63,10 +62,5 @@
     "*://sidesevenexports.com/*",
     "*://*.p-bandai.com/*",
     "*://p-bandai.com/*"
-  ],
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "{32df04f2-e476-473e-ae1c-fb7976d1850c}"
-    }
-  }
+  ]
 }

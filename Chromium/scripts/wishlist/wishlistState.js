@@ -5,14 +5,14 @@
     }
 
     async saveWishlist(wishlist) {
-        await browser.storage.local.set({ wishlist });
+        await chrome.storage.local.set({ wishlist });
         if (this.onUpdate) {
             this.onUpdate();
         }
     }
 
     async getWishlist() {
-        const data = await browser.storage.local.get({ wishlist: [] });
+        const data = await chrome.storage.local.get({ wishlist: [] });
         return data.wishlist;
     }
 

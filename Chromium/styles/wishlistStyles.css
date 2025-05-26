@@ -218,12 +218,18 @@
 }
 
 .mkw-preference-input {
-    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
     border: 2px solid black;
     font-size: var(--mkw-font);
     height: 40px;
     text-align: center;
     width: 60px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .mkw-images {
@@ -242,4 +248,5 @@
     height: 100%;
     object-fit: contain;
     width: 100%;
+    min-height: 0;
 }

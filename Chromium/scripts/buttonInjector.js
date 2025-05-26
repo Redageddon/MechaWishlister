@@ -29,7 +29,7 @@ async function handleWishlistButtonClick(event) {
     event.stopPropagation();
 
     try {
-        const { wishlist = [] } = await browser.storage.local.get({ wishlist: [] });
+        const { wishlist = [] } = await chrome.storage.local.get({ wishlist: [] });
         const product = getProductData(document, window.location.href);
 
         if (!product) {
@@ -41,7 +41,7 @@ async function handleWishlistButtonClick(event) {
             return;
         }
 
-        await browser.storage.local.set({
+        await chrome.storage.local.set({
             wishlist: [...wishlist, product]
         });
         alert('Added to wishlist!');
