@@ -1,13 +1,19 @@
-function addWishlistButton() {
+// Storage API for Firefox extension
+const storage = browser.storage.local;
+
+// Array of selectors to find the product form container
+const selectors = [
+    '.product-form',                    // usagundamstore, gundamplacestore
+    '[class*="grid-cols-add-bag-"]',    // newtype
+    '.product-form__buttons',           // gundamplanet
+    '.add_to_cart_form',                // p-bandai
+    '.product__form--add-to-cart',      // sidesevenexports
+    '.item-detail__right'               // amiami
+];
+
+// Function that adds the wishlist button to the product page
+const addWishlistButton = () => {
     console.log('Attempting adding wishlist button...');
-    const selectors = [
-        '.product-form',                    // usagundamstore, gundamplacestore
-        '[class*="grid-cols-add-bag-"]',    // newtype
-        '.product-form__buttons',           // gundamplanet
-        '.add_to_cart_form',                // p-bandai
-        '.product__form--add-to-cart',      // sidesevenexports
-        '.item-detail'                      // amiami
-    ];
 
     const container = selectors.map(selector => document.querySelector(selector)).find(el => el);
     if (!container || document.querySelector('.mkw-wishlist-button')) return false;
@@ -17,7 +23,8 @@ function addWishlistButton() {
     return true;
 }
 
-function createWishlistButton() {
+// Function that handles the creation of the wishlist button
+const createWishlistButton = () => {
     const button = document.createElement('button');
     button.classList.add('mkw-wishlist-button');
     button.innerText = 'Add to Wishlister';
@@ -26,12 +33,13 @@ function createWishlistButton() {
     return button;
 }
 
-async function handleWishlistButtonClick(event) {
+// Function that handles the click event of the wishlist button
+const handleWishlistButtonClick = async (event) => {
     event.preventDefault();
     event.stopPropagation();
 
     try {
-        const { wishlist = [] } = await browser.storage.local.get({ wishlist: [] });
+        const { wishlist = [] } = await storage.get({ wishlist: [] });
         const product = getProductData(document, window.location.href);
 
         if (!product) {
@@ -53,26 +61,22 @@ async function handleWishlistButtonClick(event) {
     }
 }
 
-window.addEventListener('load', () => {
-    // Delays incase certain websites load content dynamically.
-    // This is a workaround for sites that load content after the initial page load.
-    const delays = [
-        0,          // 0s delay
-        500,        // 0.5s delay
-        1000,       // 1s delay
-        1500,       // 1.5s delay
-        2000,       // 2s delay
-        2500,       // 2.5s delay
-    ]
-
-    let buttonAdded = false;
-
-    delays.forEach(delay => {
-        setTimeout(() => {
-            buttonAdded = addWishlistButton();
-        }, delay);
-        if (buttonAdded) return;
+window.addEventListener('DOMContentLoaded', () => {
+    // Declare a observer to watch for changes in the DOM
+    const observer = new MutationObserver(() => {
+        if (addWishlistButton()) observer.disconnect();
+        else console.warn('No wishlist button added, waiting for more mutations...');
     });
 
-    if (!buttonAdded) console.Error('Failed to add wishlist button after all delays');
+    // Start observing the body for changes
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
 });
+
+
+
+
+
+

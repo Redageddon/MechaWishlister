@@ -29,7 +29,7 @@ class BaseStore {
 
     scrape() {
         const { regularPrice: r, salePrice: s } = this.getPrices(); 
-
+        
         const data = {
             title: this.getTitle().trim(),
             regularPrice: this._validatePrice(r),
@@ -42,9 +42,9 @@ class BaseStore {
     }
 
     _validatePrice(price) {
-        if (price === 'Sold Out' || price[0] === '¥') return price;
-        if (price[0] === '$') return '$' + r.split('$')[1].trim();
-        
+        if (price[0] === '$') return price;
+        if (price[0] === '¥') return price;
+        if (price[0] !== '$') return '$' + price;
         console.error('Invalid price format:', price);
     }
 

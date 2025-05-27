@@ -7,8 +7,8 @@ class AmiamiPlaceStore extends BaseStore {
         const regularPriceElement = this.doc.querySelector('.item-detail__price_state_discount-price');
         const salePriceElement = this.doc.querySelector('.item-detail__price_selling-price');
 
-        // if no prices are found, return 'Sold Out'
-        if (!regularPriceElement && !salePriceElement) return { regularPrice: 'Sold Out', salePrice: 'Sold Out' };
+        // if no prices are found, return 0.00f
+        if (!regularPriceElement && !salePriceElement) return { regularPrice: '0.00', salePrice: '0.00' };
 
         let regularPrice = this._formatPrice(regularPriceElement);
         let salePrice = this._formatPrice(salePriceElement);
@@ -23,12 +23,12 @@ class AmiamiPlaceStore extends BaseStore {
         if (!element) return;
 
         const priceText = element.innerText.toLowerCase();
+
         if (priceText.includes('jpy')) {
-            const price = priceText.replace('jpy', '').trim();
+            let price = priceText.replace('jpy', '').trim();
             return `¥${price}`;
         }
-
-        return `¥${priceText}`;
+        return `¥${price}`;
     }
 
     getImages = () => {

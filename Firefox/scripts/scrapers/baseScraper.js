@@ -42,9 +42,9 @@ class BaseStore {
     }
 
     _validatePrice(price) {
-        if (price === 'Sold Out' || price[0] === '¥') return price;
-        if (price[0] === '$') return '$' + r.split('$')[1].trim();
-        
+        if (price[0] === '$') return price;
+        if (price[0] === '¥') return price;
+        if (price[0] !== '$') return '$' + price;
         console.error('Invalid price format:', price);
     }
 
