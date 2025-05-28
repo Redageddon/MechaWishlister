@@ -2,8 +2,8 @@
     static validate(data) {
         const { title, regularPrice, salePrice, images, url } = data;
         if (!title) throw new Error('Title is required');
-        if (!regularPrice || regularPrice === '$') throw new Error('Regular price is required');
-        if (!salePrice || salePrice === '$') throw new Error('Sale price is required');
+        if (!regularPrice) throw new Error('Regular price is required');
+        if (!salePrice) throw new Error('Sale price is required');
         if (!Array.isArray(images) || images.length === 0) throw new Error('At least one image is required');
         if (!url) throw new Error('URL is required');
     }
