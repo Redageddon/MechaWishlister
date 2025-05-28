@@ -32,8 +32,8 @@ class BaseStore {
         
         const data = {
             title: this.getTitle().trim(),
-            regularPrice: this._validatePrice(r),
-            salePrice: this._validatePrice(s),
+            regularPrice: this._convertUSD(r),
+            salePrice: this._convertUSD(s),
             images: this.getImages(),
             url: this.url
         };
@@ -41,13 +41,13 @@ class BaseStore {
         return data;
     }
 
-    _validatePrice(price) {
+    _convertUSD(price) {
         const sign = price.slice(0, 1);
         const money = (parseFloat(price.slice(1).replace('\,', '').trim()));
 
         if (sign === '$') return '$' + money;
         if (sign === '¥') return '$' + (money * (1 / 144.198)).toFixed(2);
-        throw new Error('Invalid price format');
+        return null;
     }
 
     formatImageUrl(src) {
