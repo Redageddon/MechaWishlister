@@ -1,5 +1,7 @@
-chrome.action.onClicked.addListener(async () => {
-    await chrome.tabs.create({
-        url: chrome.runtime.getURL("wishlist.html")
+const api = (typeof browser !== 'undefined' ? browser : chrome);
+
+api.action.onClicked.addListener(async () => {
+    await api.tabs.create({
+        url: api.runtime.getURL("wishlist.html")
     });
 });

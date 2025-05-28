@@ -1,5 +1,5 @@
 // Storage API for Firefox extension
-const storage = browser.storage.local;
+const local_storage = (typeof browser !== 'undefined' ? browser : chrome).storage.local;
 
 // Array of selectors to find the product form container
 const selectors = [
@@ -39,7 +39,7 @@ const handleWishlistButtonClick = async (event) => {
     event.stopPropagation();
 
     try {
-        const { wishlist = [] } = await storage.get({ wishlist: [] });
+        const { wishlist = [] } = await local_storage.get({ wishlist: [] });
         const product = getProductData(document, window.location.href);
 
         if (!product) {
@@ -51,7 +51,7 @@ const handleWishlistButtonClick = async (event) => {
             return;
         }
 
-        await browser.storage.local.set({
+        await local_storage.set({
             wishlist: [...wishlist, product]
         });
         alert('Added to wishlist!');
@@ -60,7 +60,7 @@ const handleWishlistButtonClick = async (event) => {
         alert('Failed to add item to wishlist');
     }
 }
-
+window.addEventListener('load', addWishlistButton)
 window.addEventListener('DOMContentLoaded', () => {
     // Declare a observer to watch for changes in the DOM
     const observer = new MutationObserver(() => {

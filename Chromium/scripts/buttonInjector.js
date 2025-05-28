@@ -1,5 +1,5 @@
 // Storage API for chromium extension
-const storage = chrome.storage.local;
+const local_storage = (typeof browser !== 'undefined' ? browser : chrome).storage.local;
 
 // Array of selectors to find the product form container
 const selectors = [
@@ -39,7 +39,7 @@ const handleWishlistButtonClick = async (event) => {
     event.stopPropagation();
 
     try {
-        const { wishlist = [] } = await storage.get({ wishlist: [] });
+        const { wishlist = [] } = await local_storage.get({ wishlist: [] });
         const product = getProductData(document, window.location.href);
 
         if (!product) {
@@ -51,7 +51,7 @@ const handleWishlistButtonClick = async (event) => {
             return;
         }
 
-        await browser.storage.local.set({
+        await local_storage.set({
             wishlist: [...wishlist, product]
         });
         alert('Added to wishlist!');

@@ -17,7 +17,7 @@
         return Array.from(imageElements || [])
             .map(img => img.getAttribute('src'))
             .filter(src => src)
-            .map(src => src.startsWith('http') ? src : 'https:' + src)
+            .map(src => this.formatImageUrl(src))
             .map(src => src.replace('_105x105_crop_center', ''));
     }
 }

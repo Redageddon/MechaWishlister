@@ -1,18 +1,20 @@
-﻿class WishlistState {
+﻿const local_storage = (typeof browser !== 'undefined' ? browser : chrome).storage.local;
+
+class WishlistState {
     constructor(onUpdate) {
         this.selectedGrades = new Set();
         this.onUpdate = onUpdate;
     }
 
     async saveWishlist(wishlist) {
-        await chrome.storage.local.set({ wishlist });
+        await local_storage.set({ wishlist });
         if (this.onUpdate) {
             this.onUpdate();
         }
     }
 
     async getWishlist() {
-        const data = await chrome.storage.local.get({ wishlist: [] });
+        const data = await local_storage.get({ wishlist: [] });
         return data.wishlist;
     }
 
