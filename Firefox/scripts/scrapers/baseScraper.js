@@ -1,15 +1,4 @@
-﻿class ProductData {
-    static validate(data) {
-        const { title, regularPrice, salePrice, images, url } = data;
-        if (!title) throw new Error('Title is required');
-        if (!regularPrice) throw new Error('Regular price is required');
-        if (!salePrice) throw new Error('Sale price is required');
-        if (!Array.isArray(images) || images.length === 0) throw new Error('At least one image is required');
-        if (!url) throw new Error('URL is required');
-    }
-}
-
-class BaseStore {
+﻿class BaseStore {
     constructor(doc, url) {
         this.doc = doc;
         this.url = url;
@@ -37,7 +26,7 @@ class BaseStore {
             images: this.getImages(),
             url: this.url
         };
-        ProductData.validate(data);
+        this._validate(data);
         return data;
     }
 
@@ -48,6 +37,15 @@ class BaseStore {
         if (sign === '$') return '$' + money;
         if (sign === '¥') return '$' + (money * (1 / 144.198)).toFixed(2);
         return null;
+    }
+
+    _validate(data) {
+        const { title, regularPrice, salePrice, images, url } = data;
+        if (!title) throw new Error('Title is required');
+        if (!regularPrice) throw new Error('Regular price is required');
+        if (!salePrice) throw new Error('Sale price is required');
+        if (!Array.isArray(images) || images.length === 0) throw new Error('At least one image is required');
+        if (!url) throw new Error('URL is required');
     }
 
     formatImageUrl(src) {
