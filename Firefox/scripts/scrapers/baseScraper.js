@@ -43,7 +43,7 @@ class BaseStore {
 
     _convertUSD(price) {
         const sign = price.slice(0, 1);
-        const money = (parseFloat(price.slice(1).replace('\,', '')));
+        const money = (parseFloat(price.slice(1).replace('\,', '').trim()));
 
         if (sign === '$') return '$' + money;
         if (sign === '¥') return '$' + (money * (1 / 144.198)).toFixed(2);
