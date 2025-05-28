@@ -27,7 +27,9 @@
         "*://*.sidesevenexports.com/*",
         "*://sidesevenexports.com/*",
         "*://*.p-bandai.com/*",
-        "*://p-bandai.com/*"
+        "*://p-bandai.com/*",
+        "*://amiami.com/*",
+        "*://*.amiami.com/*"
       ],
       "js": [
         "scripts/scrapers/baseScraper.js",
@@ -37,6 +39,7 @@
         "scripts/scrapers/PBandaiStore.js",
         "scripts/scrapers/SideSevenExportsStore.js",
         "scripts/scrapers/UsaGundamStore.js",
+        "scripts/scrapers/AmiamiPlaceStore.js",
         "scripts/buttonInjector.js"
       ],
       "css": [
@@ -47,7 +50,9 @@
     }
   ],
   "background": {
-    "scripts": ["scripts/wishlistLauncher.js"],
+    "scripts": [
+      "scripts/wishlistLauncher.js"
+    ],
     "type": "module"
   },
   "host_permissions": [
@@ -62,7 +67,9 @@
     "*://*.sidesevenexports.com/*",
     "*://sidesevenexports.com/*",
     "*://*.p-bandai.com/*",
-    "*://p-bandai.com/*"
+    "*://p-bandai.com/*",
+    "*://amiami.com/*",
+    "*://*.amiami.com/*"
   ],
   "browser_specific_settings": {
     "gecko": {
