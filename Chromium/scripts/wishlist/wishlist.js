@@ -1,7 +1,9 @@
 const GUNPLA_GRADES = [
-    'Advanced Grade', 'Entry Grade', 'Full Mechanics', 'High Grade',
-    'Master Grade', 'Master Grade SD', 'Mega Size Model', 'No Grade',
-    'Other', 'Perfect Grade', 'Real Grade', 'Reborn-100', 'Super Deformed'
+    'Advanced Grade', 'Entry Grade', 'EX', 'Figurine', 'First Grade',
+    'Full Mechanics', 'High Grade', 'Hi-Resolution Model',
+    'Master Grade', 'Master Grade Super Deformed', 'Mecha Girl', 'Mega Size Model', 'No Grade',
+    'Other', 'Perfect Grade', 'Plushy', 'Real Grade', 'Reborn-100', 'Super Deformed',
+    'Super Deformed Cross Silhouette', 'Third Party'
 ];
 
 class WishlistUI {
