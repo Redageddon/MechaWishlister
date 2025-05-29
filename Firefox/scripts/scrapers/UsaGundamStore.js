@@ -1,4 +1,8 @@
 ﻿class UsaGundamStore extends BaseStore {
+    static {
+        StoreRegistry.register('usagundamstore.com', UsaGundamStore);
+    }
+
     getTitle() {
         return this.doc.querySelector('.product__title, h1')?.innerText;
     }

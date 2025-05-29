@@ -1,4 +1,8 @@
 ﻿class NewtypeStore extends BaseStore {
+    static {
+        StoreRegistry.register('newtype.us', NewtypeStore);
+    }
+
     getTitle() {
         return this.doc.querySelector('h2')?.innerText;
     }

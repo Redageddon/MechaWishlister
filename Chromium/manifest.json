@@ -39,7 +39,7 @@
         "scripts/scrapers/PBandaiStore.js",
         "scripts/scrapers/SideSevenExportsStore.js",
         "scripts/scrapers/UsaGundamStore.js",
-        "scripts/scrapers/AmiamiPlaceStore.js",
+        "scripts/scrapers/AmiamiStore.js",
         "scripts/buttonInjector.js"
       ],
       "css": [

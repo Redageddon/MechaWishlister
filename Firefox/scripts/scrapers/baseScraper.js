@@ -1,4 +1,22 @@
-﻿class BaseStore {
+﻿class StoreRegistry {
+    static stores = new Map();
+
+    static register(domainPattern, StoreClass) {
+        StoreRegistry.stores.set(domainPattern, StoreClass);
+    }
+
+    static getStoreClass(url) {
+        const domain = new URL(url).hostname;
+        for (const [pattern, StoreClass] of StoreRegistry.stores) {
+            if (domain.includes(pattern)) {
+                return StoreClass;
+            }
+        }
+        return null;
+    }
+}
+
+class BaseStore {
     constructor(doc, url) {
         this.doc = doc;
         this.url = url;
@@ -56,24 +74,9 @@
 }
 
 function getProductData(doc, url) {
-    const domain = new URL(url).hostname;
-    let store = null;
-
-    if (domain.includes("usagundamstore.com")) {
-        store = new UsaGundamStore(doc, url);
-    } else if (domain.includes("gundamplacestore.com")) {
-        store = new GundamPlaceStore(doc, url);
-    } else if (domain.includes("newtype.us")) {
-        store = new NewtypeStore(doc, url);
-    } else if (domain.includes("gundamplanet.com")) {
-        store = new GundamPlanetStore(doc, url);
-    } else if (domain.includes("p-bandai.com")) {
-        store = new PBandaiStore(doc, url);
-    } else if (domain.includes("sidesevenexports.com")) {
-        store = new SideSevenExportsStore(doc, url);
-    } else if (domain.includes("amiami.com")) {
-        store = new AmiamiPlaceStore(doc, url);
-    }
-
-    return store?.scrape();
+    const StoreClass = StoreRegistry.getStoreClass(url);
+    if (!StoreClass) return null;
+    
+    const store = new StoreClass(doc, url);
+    return store.scrape();
 }

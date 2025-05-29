@@ -1,4 +1,8 @@
 ﻿class GundamPlanetStore extends BaseStore {
+    static {
+        StoreRegistry.register('gundamplanet.com', GundamPlanetStore);
+    }
+
     getTitle() {
         return this.doc.querySelector('.product__title, h1')?.innerText;
     }

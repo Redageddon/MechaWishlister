@@ -1,4 +1,8 @@
 ﻿class PBandaiStore extends BaseStore {
+    static {
+        StoreRegistry.register('p-bandai.com', PBandaiStore);
+    }
+
     getTitle() {
         return this.doc.querySelector('.o-product__name')?.innerText;
     }
