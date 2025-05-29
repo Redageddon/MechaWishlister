@@ -1,4 +1,8 @@
-class AmiamiPlaceStore extends BaseStore {
+class AmiamiStore extends BaseStore {
+    static {
+        StoreRegistry.register('amiami.com', AmiamiStore);
+    }
+
     getTitle = () => {
         return this.doc.querySelector('.item-detail__section-title')?.innerText || '';
     }
