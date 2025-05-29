@@ -44,6 +44,4 @@ class AmiamiStore extends BaseStore {
             .filter(src => src)
             .map(src => this.formatImageUrl(src));
     }
-
-
 }
